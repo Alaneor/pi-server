@@ -18,3 +18,13 @@
   notify:
   - update pkgfile db
   - install pkgfile cron
+
+- name: Process and copy Bash sources
+  template: src={{ item }}.j2 dest=/usr/local/etc/{{ item }}
+  with_items:
+  - bash.bashrc
+  - bash_aliases.sh
+  - bash_colours.sh
+
+- name: Enable bash.bashrc
+  lineinfile: dest=/etc/bash.bashrc line="[ -f /usr/local/etc/bash.bashrc ] && . /usr/local/etc/bash.bashrc" state=present

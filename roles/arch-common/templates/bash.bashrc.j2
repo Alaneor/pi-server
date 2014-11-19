@@ -1,0 +1,55 @@
+# {{ ansible_managed }}
+
+ETCDIR="/usr/local/etc"
+
+# Custom colour variables for Bash prompt
+[ -f $ETCDIR/bash_colours.bash ] && . $ETCDIR/bash_colours.bash
+
+# Custom aliases and overrides
+[ -f $ETCDIR/bash_aliases.bash ] && . $ETCDIR/bash_aliases.bash
+
+# Enable command-not-found hook
+[ -f /usr/share/doc/pkgfile/command-not-found.bash ] && . /usr/share/doc/pkgfile/command-not-found.bash
+
+# Clean up
+unset ETCDIR
+
+# Set default editor
+export EDITOR=nano
+
+# Allow Composer's global binaries
+PATH=$PATH:/${HOME}/.composer/vendor/bin
+
+# Include local directory in PATH to avoid using ./ when calling scripts in current dir
+PATH=$PATH:.
+
+# Configure default Bash prompt
+
+# Use different colour when logged in as root
+if [[ ${EUID} == 0 ]]; then
+  PS1COLOR=$RED
+else
+  PS1COLOR=$YELLOW
+fi
+PS1="\[${BOLD}${PS1COLOR}\]\u"                 # Current user
+PS1="$PS1\[$BASE0\]@"                          # Separator
+PS1="$PS1\[$PS1COLOR\]\h"                      # Current hostname
+PS1="$PS1\[$RESET\] [\W]\[${BOLD}\]"
+#PS1="$PS1\[$RESET\]\[$PS1COLOR\]\$(__git_ps1)" # Current git branch (if any)
+PS1="$PS1\[$BASE0\] ☯ \[$RESET\]"              # Ending prompt character
+
+unset PS1COLOR                                 # Clean up
+
+
+# Colourise man
+function man () {
+  env \
+    LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+  man "$@"
+}

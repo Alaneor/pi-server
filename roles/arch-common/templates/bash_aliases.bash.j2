@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+
+## Modified commands ##
+alias grep='grep --color=auto'
+alias more='less'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias nano='nano -w'
+#alias ping='ping -c 5'
+alias dmesg='dmesg -HL'
+alias dart='dart -c' # Force Dart to run in checked mode on this machine
+
+## ls ##
+alias ls='ls -ahG'
+alias lr='ls -R'                    # recursive ls
+alias ll='ls -l'
+alias la='ll -A'
+alias lx='ll -BX'                   # sort by extension
+alias lz='ll -rS'                   # sort by size
+alias lt='ll -rt'                   # sort by date
+alias lm='la | more'
+
+## Error tolerance ##
+alias ..='cd ..'
+alias cd..='cd ..'
+
+## Git aliases ##
+alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
