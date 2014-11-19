@@ -1,0 +1,6 @@
+---
+- name: update pkgfile db
+  command: pkgfile -u
+
+- name: install pkgfile cron
+  cron: name="Update pkgfile database" job="pkgfile -u" hour=0 state=present

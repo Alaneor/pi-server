@@ -1,4 +1,4 @@
 ---
-- hosts: pi-server
+- hosts: all
   roles:
   - arch-common

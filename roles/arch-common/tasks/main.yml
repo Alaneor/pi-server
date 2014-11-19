@@ -6,9 +6,15 @@
   pacman: name={{ item }} state=present
   with_items:
   - archey3
-  - cronie
-  - git
   - autoconf
   - automake
-  - make
+  - cronie
   - gcc
+  - git
+  - make
+
+- name: Install command-not-found hook
+  pacman: name=pkgfile state=present
+  notify:
+  - update pkgfile db
+  - install pkgfile cron
