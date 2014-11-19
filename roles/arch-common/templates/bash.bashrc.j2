@@ -31,14 +31,14 @@ if [[ ${EUID} == 0 ]]; then
 else
   PS1COLOR=$YELLOW
 fi
-PS1="\[${BOLD}${PS1COLOR}\]\u"                 # Current user
-PS1="$PS1\[$BASE0\]@"                          # Separator
-PS1="$PS1\[$PS1COLOR\]\h"                      # Current hostname
-PS1="$PS1\[$RESET\] [\W]\[${BOLD}\]"
-#PS1="$PS1\[$RESET\]\[$PS1COLOR\]\$(__git_ps1)" # Current git branch (if any)
-PS1="$PS1\[$BASE0\] ☯ \[$RESET\]"              # Ending prompt character
+PS1="\[${BOLD}${PS1COLOR}\]\u"                  # Current user
+PS1+="\[$BASE0\]@"                              # Separator
+PS1+="\[$PS1COLOR\]\h"                          # Current hostname
+PS1+="\[$RESET\] [\W]"
+#PS1+="\[$RESET\]\[$PS1COLOR\]\$(__git_ps1)"    # Current git branch (if any)
+PS1+="\[$BASE0\] ☯ \[$RESET\]"                  # Ending prompt character
 
-unset PS1COLOR                                 # Clean up
+unset PS1COLOR                                  # Clean up
 
 
 # Colourise man
