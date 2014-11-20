@@ -12,6 +12,11 @@
   - make
   - wget
 
+- name: Enable system services
+  service: name={{ item }} enabled=yes state=started
+  with_items:
+  - cronie.service
+
 - name: Install pacman -Sy to cron
   cron: name="Update pacman repositories" job="pacman -Sy" hour=0 state=present
 
