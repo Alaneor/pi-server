@@ -6,7 +6,7 @@
   - autoconf
   - automake
   - cronie
-  - fortune
+  - fortune-mod
   - gcc
   - git
   - make
