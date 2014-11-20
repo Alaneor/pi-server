@@ -28,17 +28,26 @@ PATH=$PATH:.
 
 # Configure default Bash prompt
 
+function pssymbol () {
+  retcode=$?
+  if [[ $retcode == 0 ]]; then
+    echo "✓"
+  else
+    echo "✗"
+  fi
+}
+
 # Use different colour when logged in as root
 if [[ ${EUID} == 0 ]]; then
   PS1COLOR=$RED
 else
   PS1COLOR=$YELLOW
 fi
-PS1="\\[${BOLD}${PS1COLOR}\\]\u"                  # Current user
+PS1="\$(pssymbol) "                               # Success/failure indicator
+PS1+="\\[${BOLD}${PS1COLOR}\\]\u"                 # Current user
 PS1+="\\[$BASE0\\]@"                              # Separator
 PS1+="\\[$PS1COLOR\\]\h"                          # Current hostname
 PS1+="\\[$RESET\\] [\W]"
-#PS1+="\\[$RESET\\]\\[$PS1COLOR\\]\$(__git_ps1)"  # Current git branch (if any)
 PS1+="\\[$BASE0\\] ☯ \\[$RESET\\]"                # Ending prompt character
 
 unset PS1COLOR                                    # Clean up
