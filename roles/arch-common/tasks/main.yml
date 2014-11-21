@@ -1,4 +1,8 @@
 ---
+
+- name: Configure hostname
+  hostname: name=pi-server
+
 - name: Install common system packages
   pacman: name={{ item }} state=present
   with_items:
