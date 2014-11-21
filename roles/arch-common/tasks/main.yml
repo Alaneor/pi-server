@@ -3,6 +3,15 @@
 - name: Configure hostname
   hostname: name=pi-server
 
+- name: Generate locales
+  locale_gen: name={{ item }} state=present
+  with_items:
+  - en_GB.UTF-8
+  - en_US.UTF-8
+  notify:
+  - set locale
+
+
 - name: Install common system packages
   pacman: name={{ item }} state=present
   with_items:

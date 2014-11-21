@@ -4,3 +4,6 @@
 
 - name: install pkgfile cron
   cron: name="Update pkgfile database" job="pkgfile -u" hour=1 state=present
+
+- name: set locale
+  template: src=locale.conf.j2 dest=/etc/locale.conf
