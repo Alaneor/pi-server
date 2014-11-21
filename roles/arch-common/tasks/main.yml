@@ -1,12 +1,12 @@
 ---
 - name: Generate locales
-  locale_gen: name={{ item }} state=present
+  lineinfile: dest=/etc/locale.gen line={{ item }} state=present
   with_items:
-  - en_GB.UTF-8
-  - en_US.UTF-8
+  - en_GB.UTF-8 UTF-8
+  - en_US.UTF-8 UTF-8
   notify:
+  - regenerate locales
   - set locale
-
 
 - name: Install common system packages
   pacman: name={{ item }} state=present
