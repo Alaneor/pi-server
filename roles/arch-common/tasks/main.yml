@@ -46,4 +46,7 @@
   template: src=fstab.j2 dest=/etc/fstab
 
 - name: Enable bash.bashrc
-  lineinfile: dest=/etc/bash.bashrc line="[ -f /usr/local/etc/bash.bashrc ] && . /usr/local/etc/bash.bashrc" state=present
+  lineinfile:
+    dest=/etc/bash.bashrc
+    line="[ -f /usr/local/etc/bash.bashrc ] && . /usr/local/etc/bash.bashrc"
+    state=present
