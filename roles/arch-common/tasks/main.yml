@@ -29,6 +29,13 @@
 - name: Install pacman -Sy to cron
   cron: name="Update pacman repositories" job="pacman -Sy" minute=0 state=present
 
+- name: Install ansible-pull to cron
+  cron:
+    name="Run server provisioning"
+    job="cd /root/pi-server && ansible-pull -i inventory.ini -o -U {{ git_remote }}"
+    minute=*/15
+    state=present
+
 - name: Install command-not-found hook
   pacman: name=pkgfile state=present
   notify:
