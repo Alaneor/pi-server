@@ -27,7 +27,7 @@
   - cronie.service
 
 - name: Install pacman -Sy to cron
-  cron: name="Update pacman repositories" job="pacman -Sy" hour=0 state=present
+  cron: name="Update pacman repositories" job="pacman -Sy" minute=0 state=present
 
 - name: Install command-not-found hook
   pacman: name=pkgfile state=present
