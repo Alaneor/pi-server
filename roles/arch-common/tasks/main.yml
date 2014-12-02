@@ -26,6 +26,9 @@
   with_items:
   - cronie.service
 
+- name: Configure multi-user boot target
+  command: systemctl set-default -f multi-user.target
+
 - name: Install pacman -Sy to cron
   cron: name="Update pacman repositories" job="pacman -Sy" minute=0 state=present
 
