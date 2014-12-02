@@ -10,3 +10,6 @@
 
 - name: set locale
   template: src=locale.conf.j2 dest=/etc/locale.conf
+
+- name: mount /boot
+  mount: name=/boot src=/dev/mmcblk0p1 fstype=vfat state=mounted
