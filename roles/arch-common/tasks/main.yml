@@ -11,7 +11,6 @@
 - name: Install common system packages
   pacman: name={{ item }} state=present
   with_items:
-  - archey3
   - autoconf
   - automake
   - cronie
