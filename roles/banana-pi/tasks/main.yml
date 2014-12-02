@@ -1,0 +1,5 @@
+---
+- name: Install fstab
+  template: src=fstab.j2 dest=/etc/fstab
+  notify:
+  - mount /boot

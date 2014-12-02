@@ -52,11 +52,6 @@
   - bash_aliases.bash
   - bash_colours.bash
 
-- name: Install fstab
-  template: src=fstab.j2 dest=/etc/fstab
-  notify:
-  - mount /boot
-
 - name: Enable bash.bashrc
   lineinfile:
     dest=/etc/bash.bashrc
