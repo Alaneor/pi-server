@@ -57,3 +57,21 @@
     dest=/etc/bash.bashrc
     line="[ -f /usr/local/etc/bash.bashrc ] && . /usr/local/etc/bash.bashrc"
     state=present
+
+- name: Install authorised keys autoupdater
+  template:
+    src=update-authorised-keys.js
+    dest=/usr/local/bin/update-authorised-keys
+    mode=755
+    owner=root
+    group=root
+
+- name: Install RSA public key
+  copy:
+    src=rr.rossmann@me.com.pub
+    dest=/root/.ssh/rr.rossmann@me.com.pub
+    mode=600
+    owner=root
+    group=root
+  notify:
+  - update authorised keys

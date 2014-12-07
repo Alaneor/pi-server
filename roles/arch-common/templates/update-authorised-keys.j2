@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# {{ ansible_managed }}
+
+tmpfile=$(mktemp authorized_keysXXXXX --tmpdir)
+targetfile=$HOME/.ssh/authorized_keys
+
+echo "# This file is auto-generated from contents of all *.pub files in the current directory.
+# To regenerate it for current user, run /usr/local/bin/update-authorised-keys
+" > $tmpfile
+
+cat $HOME/.ssh/*.pub >> $tmpfile
+
+if [ -s $tmpfile ]; then
+  mv $tmpfile $targetfile
+  chmod 600 $targetfile
+fi
