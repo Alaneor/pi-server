@@ -14,10 +14,12 @@
   - autoconf
   - automake
   - cronie
+  - dnsutils
   - fortune-mod
   - gcc
   - git
   - make
+  - traceroute
   - wget
 
 - name: Enable system services
