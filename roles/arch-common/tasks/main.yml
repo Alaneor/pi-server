@@ -77,3 +77,11 @@
     group=root
   notify:
   - update authorised keys
+
+- name: Configure /etc/hosts
+  template:
+    src=hosts.j2
+    dest=/etc/hosts
+    mode=644
+    owner=root
+    group=root
