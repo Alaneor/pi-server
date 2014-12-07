@@ -1,0 +1,8 @@
+---
+- hosts: os-archlinux
+  roles:
+  - arch-common
+
+- hosts: pi
+  roles:
+  - banana-pi
