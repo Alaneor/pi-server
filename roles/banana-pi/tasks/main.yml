@@ -3,6 +3,7 @@
   template: src=fstab.j2 dest=/etc/fstab
   notify:
   - mount /boot
+  meta: flush_handlers
 
 - name: Install uEnv.txt
   template: src=uEnv.txt.j2 dest=/boot/uEnv.txt
