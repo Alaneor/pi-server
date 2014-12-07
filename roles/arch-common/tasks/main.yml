@@ -60,7 +60,7 @@
 
 - name: Install authorised keys autoupdater
   template:
-    src=update-authorised-keys.js
+    src=update-authorised-keys.j2
     dest=/usr/local/bin/update-authorised-keys
     mode=755
     owner=root
