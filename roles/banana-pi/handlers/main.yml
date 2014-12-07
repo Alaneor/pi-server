@@ -1,3 +1,1 @@
 ---
-- name: mount /boot
-  command: mount /boot -o remount
