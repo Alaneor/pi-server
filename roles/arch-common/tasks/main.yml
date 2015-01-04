@@ -68,6 +68,11 @@
     owner=root
     group=root
 
+- name: Ensure /root/.ssh directory exists
+  command: mkdir /root/.ssh
+    creates=/root/.ssh
+
+
 - name: Install RSA public key
   copy:
     src=rr.rossmann@me.com.pub
