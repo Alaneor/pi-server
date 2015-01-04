@@ -8,6 +8,13 @@
   - regenerate locales
   - set locale
 
+- name: Set timezone to UTC
+  file:
+    src=/usr/share/zoneinfo/UTC
+    dest=/etc/localtime
+    state=link
+    force=yes
+
 - name: Install common system packages
   pacman: name={{ item }} state=present
   with_items:
