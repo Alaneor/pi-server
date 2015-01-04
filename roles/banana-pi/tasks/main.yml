@@ -8,3 +8,6 @@
 
 - name: Install uEnv.txt
   template: src=uEnv.txt.j2 dest=/boot/uEnv.txt
+
+- name: Install sunxi-tools
+  pacman: name=sunxi-tools state=present
