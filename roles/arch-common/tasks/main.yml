@@ -25,6 +25,7 @@
   - fortune-mod
   - gcc
   - git
+  - lsof
   - make
   - traceroute
   - wget
